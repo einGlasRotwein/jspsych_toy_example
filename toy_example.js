@@ -21,7 +21,8 @@ var show_picture = {
     type: 'image-button-response',
     stimulus: jsPsych.timelineVariable(['image']), // Take the element "image" from the timeline variable
     choices: ['s&uuml;&szlig;', 'meh'],
-    stimulus_height: 400
+    stimulus_height: 400,
+    render_on_canvas: false
 };
 
 var feedback = {
