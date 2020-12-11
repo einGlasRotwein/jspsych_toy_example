@@ -21,8 +21,7 @@ var show_picture = {
     type: 'image-button-response',
     stimulus: jsPsych.timelineVariable(['image']), // Take the element "image" from the timeline variable
     choices: ['s&uuml;&szlig;', 'meh'],
-    stimulus_height: 400,
-    render_on_canvas: false
+    stimulus_height: 400
 };
 
 var feedback = {
@@ -52,8 +51,11 @@ var pictures = []; // initialise empty array
 var nTrials = 3; // number of trials
 var imgPath = "./images/img"
 
+var picture_array = []; // for preloading
+
 for (let i = 0; i < nTrials ; i ++) { // loop through picture numbers
     pictures.push({ image : `${imgPath}${i}.jpg` }); // push to timeline variable array
+    picture_array.push(`${imgPath}${i}.jpg`);
 }
 
 // BUILD TIMELINE
@@ -71,6 +73,7 @@ timeline.push(instructions, main_procedure, end_screen);
 // START EXPERIMENT
 jsPsych.init({
   timeline: timeline,
+  preload_images: picture_array,
   on_finish: function() {
       jsPsych.data.displayData();
   }
